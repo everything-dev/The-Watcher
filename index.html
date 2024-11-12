@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Use Our Program - Modern Guide</title>
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #2c3e50;
+            --accent-color: #f39c12;
+            --text-color: #333;
+            --background-color: #f4f4f4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        .hero {
+            background-color: var(--secondary-color);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            text-align: center;
+            z-index: 2;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: white;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out 1s both;
+        }
+
+        .btn:hover {
+            background-color: #e67e22;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            opacity: 0.8;
+            z-index: 1;
+        }
+
+        .hero-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 20s infinite;
+        }
+
+        .shape:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            left: 25%;
+            top: 20%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            right: 10%;
+            top: 40%;
+            animation-delay: 5s;
+        }
+
+        .shape:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            left: 10%;
+            bottom: 30%;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 6rem;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .step.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .step-image {
+            flex: 1;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .step-image:hover {
+            transform: scale(1.05);
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-number {
+            font-size: 4rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .step h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .step p {
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .step {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .step-image {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        <div class="hero-content">
+            <h1>Master Our Program</h1>
+            <p>Unlock your potential with our cutting-edge software "The Watcher"</p>
+            <a href="#steps" class="btn">Get Started</a>
+        </div>
+    </header>
+
+    <main class="container" id="steps">
+        <div class="steps">
+            <div class="step">
+                <img src="https://ahmedxbz.github.io/photoprogram123452/Screenshot (776).png" alt="Download the Program" class="step-image">
+                <div class="step-content">
+                    <div class="step-number">01</div>
+                    <h2>OpenUp the Program</h2>
+                    <p>Visit our website and click on the download button to get the latest version of our program. Ensure you have a stable internet connection for a smooth download experience.</p>
+                </div>
+            </div>
+            <div class="step">
+                <img src="https://ahmedxbz.github.io/photoprogram7531/Screenshot (778).png" alt="Install the Software" class="step-image">
+                <div class="step-content">
+                    <div class="step-number">02</div>
+                    <h2>Get The App.'s Bot</h2>
+                    <p>Get The Watcher Bot By <a href="https://t.me/etwatcher_bot" style="text-decoration: none;color: #4a90e2;">Clicking Here</a>.The Watcher Bot Is Telegram Bot Which You Can reserve The Opening Tabs in The Monitored Device.</p>
+                </div>
+            </div>
+            <div class="step">
+                <img src="https://ahmedxbz.github.io/Programphoto6689/Screenshot (779).png" alt="Launch the Application" class="step-image">
+                <div class="step-content">
+                    <div class="step-number">03</div>
+                    <h2>Get Your Chat Id</h2>
+                    <p>You Can Get Your Telegram Chat Id By Chat Id Getter Bot By <a href="https://t.me/chatIDrobot" style="text-decoration: none;color: #4a90e2;">Clicking Here</a>.</p>
+                </div>
+            </div>
+            <div class="step">
+                <img src="https://ahmedxbz.github.io/programphoto65765/Screenshot (780).png" alt="Set Up Your Account" class="step-image">
+                <div class="step-content">
+                    <div class="step-number">04</div>
+                    <h2>Paste Your Chat Id To The App.</h2>
+                    <p>Paste Chat Id Of The Monitoring Reports Receiver Device In The Chat Id Entry Of The Application.</p>
+                </div>
+            </div>
+            <div class="step">
+                <img src="https://ahmedxbz.github.io/programphoto6562/Screenshot (781).png" alt="Start Using the Program" class="step-image">
+                <div class="step-content">
+                    <div class="step-number">05</div>
+                    <h2>Start Using the Program</h2>
+                    <p>Click "Start Monitoring" Button And Explore the interface, use the help menu for guidance, and enjoy using our program! Don't forget to check out the tutorials and documentation for advanced features and tips.</p>
+                </div>
+            </div>
+
+            <div style="display: flex;justify-content: center;">
+
+
+                <div style="width: 100%;height: 7px;border-radius: 1em;background: linear-gradient(to right,blue,pink,yellow,green);"></div>
+
+                
+            </div>
+
+            <div class="step" style="padding-top: 11em;">
+                <img src="data:image/png;base64,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" alt="Start Using the Program" class="step-image">
+                <div class="step-content">
+                    
+                    <h2 style="color: black;font-size: 3.4em;">Conclusion</h2>
+                    <p>Watcher application is something which you can monitor the active tabs in the monitored device such as your friend laptop,you can get the opened tabs in your friend laptop browser by The Watcher Telegram Bot every 10 seconds.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+    
+
+    
+
+    </div>
+
+
+
+    <footer>
+        <p>&copy; 2024 Our Program. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        function handleScroll() {
+            const steps = document.querySelectorAll('.step');
+            steps.forEach((step, index) => {
+                if (isElementInViewport(step)) {
+                    setTimeout(() => {
+                        step.classList.add('visible');
+                    }, index * 200);
+                }
+            });
+        }
+
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('load', handleScroll);
+
+        document.querySelector('.btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('#steps').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+
+        // Parallax effect for hero shapes
+        document.addEventListener('mousemove', (e) => {
+            const shapes = document.querySelectorAll('.shape');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+
+            shapes.forEach((shape) => {
+                const speed = shape.getAttribute('data-speed');
+                const xOffset = (window.innerWidth / 2 - e.clientX) * speed;
+                const yOffset = (window.innerHeight / 2 - e.clientY) * speed;
+                shape.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
